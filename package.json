@@ -1,0 +1,81 @@
+{
+  "name": "crystaleth",
+  "version": "0.1.0",
+  "description": "Descentralized liquidity pool yield aggregator",
+  "author": {
+    "name": "CrystalEth",
+    "url": "https://crystaleth.finance",
+    "github": "https://github.com/crystaleth",
+    "twitter": "https://twitter.com/crystaleth"
+  },
+  "homepage": ".",
+  "copyright": "Copyright 2021 CrystalEth",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
+  },
+  "dependencies": {
+    "@coreui/chartjs": "^2.0.0",
+    "@coreui/coreui": "^3.4.0",
+    "@coreui/icons": "^2.0.0",
+    "@coreui/icons-react": "^1.1.0",
+    "@coreui/react": "^3.4.6",
+    "@coreui/react-chartjs": "^1.1.0",
+    "@coreui/utils": "^1.3.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
+    "classnames": "^2.2.6",
+    "core-js": "^3.9.1",
+    "enzyme": "^3.11.0",
+    "lodash": "^4.17.21",
+    "moralis": "0.0.23",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-app-polyfill": "^2.0.0",
+    "react-dom": "^17.0.2",
+    "react-moralis": "^0.1.9",
+    "react-redux": "^7.2.3",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "sass": "^1.32.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "auto-changelog": "~2.2.1",
+    "react-scripts": "^4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:cov": "npm test -- --coverage --watchAll=false",
+    "test:debug": "react-scripts --inspect-brk test --runInBand",
+    "eject": "react-scripts eject",
+    "changelog": "auto-changelog --starting-version 3.0.0 --commit-limit false --hide-credit"
+  },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 10",
+    "not op_mini all"
+  ],
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/*index.js",
+      "!src/serviceWorker.js",
+      "!src/polyfill.js"
+    ]
+  },
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
+  }
+}

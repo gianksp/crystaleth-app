@@ -1,0 +1,256 @@
+// Here you can add other styles
+.bg-info {
+  background: rbga(122,49,222,1);
+}
+
+.main-avatar {
+  position: relative;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  border-radius: 50em;
+  width: 10em;
+  height: auto;
+  font-size: 14.4px;
+  box-shadow: 0 -1px 15px -4px rgba(175, 170, 224, 0.8), -9px -3px 8px -4px rgba(175, 170, 224, 0.8);
+  // -moz-box-shadow: 12px 0 15px -4px rgba(175, 170, 224, 1), -12px 0 8px -4px rgba(175, 170, 224, 0.8);
+  // -webkit-box-shadow: 12px 0 15px -4px rgba(175, 170, 224, 1), -12px 0 8px -4px rgba(175, 170, 224, 0.8);
+  // -o-box-shadow: 12px 0 15px -4px rgba(175, 170, 224, 1), -12px 0 8px -4px rgba(175, 170, 224, 0.8);
+}
+
+.avatar-container {
+  flex-grow: 0;
+  min-width: 12em;
+}
+
+.c-app {
+  background-color: white;
+}
+
+.avatar-card {
+  margin-left: 50px;
+}
+
+.avatar-card-container {
+  padding: 20px;
+  overflow: hidden;
+}
+
+.avatar-title {
+  font-weight: bold;
+  font-size: 2.2em;
+}
+
+.avatar-subtitle {
+  font-weight:300;
+  font-size: 1.4em;
+}
+
+.avatar-subtitle-verify {
+  font-weight:200;
+  font-size: 0.8em;
+}
+
+.avatar-title-container {
+  color: #888;
+}
+
+.main-action-button {
+  background-color: #E596FF;
+  border-color: #E596FF;
+  border-radius: 8px;
+  width: 100%;
+  line-height:40px;
+}
+
+.main-action-button:hover {
+  background-color: #BB69D6;
+  border-color: #BB69D6;
+  border-radius: 8px;
+}
+
+.vertical-separator {
+  height:12px;
+}
+
+
+.balance-widget {
+  background: #E596FF;
+  color: white;
+  text-align: right;
+  /* float: right; */
+  border-radius: 20px;
+  margin-top: 20px !important;
+}
+
+.empty-widget {
+  background: white;
+  color: #666 !important;
+  text-align: right;
+  /* float: right; */
+  border-radius: 20px;
+  margin-top: 20px !important;
+}
+
+.balance-widget-item {
+  margin: 0px;
+}
+
+.info-card {
+  box-shadow: 0px 0px 15px 0px rgba(229, 150, 255, 0.5), 0px 0px 0px -5px rgba(175, 170, 224, 0.5);
+  border-radius: 40px;
+  min-height: 450px;
+  text-align: center;
+  padding-top: 25px;
+}
+
+.info-card-savings {
+  color: rgba(175, 170, 224, 1);
+  font-weight: 200;
+  font-size: 3em;
+}
+
+.info-card-lottery {
+  color: rgba(229, 150, 255, 1);
+  font-weight: 200;
+  font-size: 3em;
+}
+
+.lottery-time-container {
+  display: inline-flex;
+}
+
+.lottery-time {
+  background-color: rgba(175, 170, 224, 1);
+  padding:1px 15px 1px 5px;
+  height: 16px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  margin-top:8px;
+  font-size:0.8em;
+}
+
+.lottery-timer {
+  font-size:0.8em;
+}
+
+.info-card-amount {
+  font-size: 3.5em;
+}
+
+.card-action-button {
+  max-width:200px;
+  margin:0 auto;
+}
+
+.miner-card {
+  margin: 0 auto;
+  width:65%;
+}
+
+.no-border {
+  border-width: 0px;
+}
+
+.crystal-to-mine {
+  cursor:pointer;
+  margin: 5px;
+}
+
+.metamask-login {
+  height: 96px;
+  margin:0px 10px;
+}
+
+.authenticate-banner {
+  cursor:pointer;
+  padding: 15px;
+}
+
+.authenticate-title {
+  line-height:96px;
+}
+
+.authenticate-card {
+  border-radius: 30px;
+}
+
+.edit-name-button {
+  opacity: 0.3;
+  position:absolute;
+  left: 225px;
+  top: 120px;
+}
+
+.edit-name-button:hover {
+  opacity: 1;
+}
+
+.c-avatar-img {
+  object-fit: cover;
+  height: 144px;
+}
+
+.logout-button {
+  margin-left:40px;
+}
+
+.card-bodyquote {
+  margin: 0px;
+}
+
+.staking-button {
+  background: #bf80ff;
+  color: white;
+}
+
+.staking-button:hover {
+  color: white;
+}
+
+.staking-button:hover:enabled {
+  background: #9933ff;
+}
+
+.staking-card-body {
+  padding: 0px 25px 25px 25px;
+}
+
+.tx-link {
+  margin-left:5px;
+}
+
+.alert-primary {
+  width:100%;
+  font-size: 1.25em;
+  text-align: center;
+}
+
+.c-sidebar {
+  background: #9933ff;
+}
+
+.card {
+  margin-bottom:0px;
+}
+
+.separated-card {
+  margin-bottom: 15px;
+  height: 135px;
+}
+
+.btn {
+  padding:5px;
+}
+
+.title {
+  color: #666;
+  padding-left:25px;
+}
+
+.footer-tech {
+  margin: 0 5px;
+}

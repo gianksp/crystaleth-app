@@ -1,89 +1,49 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.6.6;
-
-import "https://raw.githubusercontent.com/smartcontractkit/chainlink/develop/evm-contracts/src/v0.6/ChainlinkClient.sol";
-import "./ChainlinkConfiguration.sol";
-import "./IDividendToken.sol";
+/**
+ * Chainlink Oracle Constants
+ * Network: Kovan https://docs.chain.link/docs/decentralized-oracles-ethereum-mainnet/
+ * Alarm: https://docs.chain.link/docs/chainlink-alarm-clock/
+ * VRF (Randomizer): https://docs.chain.link/docs/get-a-random-number/
+ * Fee: 0.1 LINK
+ */
+pragma solidity ^0.6.0;
 
 /**
- * @title DividendTokenScheduler
+ * @title ChainlinkConfiguration
  * @author Giancarlo Sanchez
- * @notice Orchestrator for "stable coin" mock yield distribution.
+ * @notice Provides Chainlink oracle configuration for Alarm and VRF.
  */
-contract DividendTokenScheduler is ChainlinkClient {
+contract ChainlinkConfiguration {
 
-    bytes32 public currentRequestId;
-    uint256 public timer = 0;
-    uint256 public limitAmount = 0;
-    bytes32 public lastFullfilled;
-    address public source;
-    address public target;
-    bool public paused;
+    address private constant chainlinkToken = 0xa36085F69e2889c224210F603D836748e7dC0088;
+    address private constant oracle = 0xAA1DC356dc4B18f30C347798FD5379F3D77ABC5b;
+    uint256 private constant fee = 0.1 * 10 ** 18;
+    address private constant vrfCoordinator = 0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9;
+    bytes32 private constant jobIdScheduler = "982105d690504c5d9ce374d040c08654";
+    bytes32 private constant keyHash = 0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4;
 
-    ChainlinkConfiguration private configuration =  new ChainlinkConfiguration();
-
-    /**
-     * Constructor, utilizes ChainlinkConfiguration.sol for data
-     */
-    constructor() public {
-        setPublicChainlinkToken();
+    function getToken() public pure returns(address) {
+        return chainlinkToken;
     }
 
-    /**
-     * Set timer in seconds for dividend distribution
-     **/
-    function configureSchedule(
-        uint256 intervalSeconds,
-        address sourceAddress,
-        address targetAddress,
-        uint256 maxAmount
-    ) public {
-        timer = intervalSeconds;
-        source = sourceAddress;
-        target = targetAddress;
-        limitAmount = maxAmount;
+    function getOracle() public pure returns(address) {
+        return oracle;
     }
 
-    /**
-     * Create a Chainlink request to start an alarm and after
-     * the time in seconds is up, return throught the fulfillAlarm
-     * function
-     */
-    function startTimer() public returns (bytes32 requestId) {
-        require(timer > 0, "Timer must be set and different than zero");
-        require(limitAmount > 0, "Amount must be set and different than zero");
-        paused = false;
-        Chainlink.Request memory request = buildChainlinkRequest(configuration.getJobIdScheduler(), address(this), this.fulfillAlarm.selector);
-        request.addUint("until", block.timestamp + timer);
-        currentRequestId = sendChainlinkRequestTo(configuration.getOracle(), request, configuration.getFee());
-        return currentRequestId;
+    function getFee() public pure returns(uint256) {
+        return fee;
     }
 
-    /**
-     * Pause timer
-     **/
-    function stopTimer() public {
-        paused = true;
+    function getVRFCoordinator() public pure returns(address) {
+        return vrfCoordinator;
     }
 
-    /**
-     * Receive the response in the form of uint256
-     */
-    function fulfillAlarm(bytes32 _requestId, uint256 _volume) public recordChainlinkFulfillment(_requestId)
-    {
-        lastFullfilled = currentRequestId;
-        // Distribute yield
-        generateYield();
-        // Loop again next cycle
-        if (!paused)
-            startTimer();
+    function getJobIdScheduler() public pure returns(bytes32) {
+        return jobIdScheduler;
     }
 
-    /**
-     * Call target contract for yield distribution
-     **/
-    function generateYield() public {
-        IDividendToken(source).generateYield(target, limitAmount);
+    function getKeyHash() public pure returns(bytes32) {
+        return keyHash;
     }
 }

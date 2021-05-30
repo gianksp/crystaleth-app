@@ -199,7 +199,7 @@ contract StakingToken is ERC20, Ownable {
     /**
      * Reset pool allocation
      **/
-    function resetPrizePool() private {
+    function resetPrizePool() public {
         prizePoolAllocation = 0;
         delete poolParticipants;
     }

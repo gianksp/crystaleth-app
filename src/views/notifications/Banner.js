@@ -25,7 +25,7 @@ const Banner = () => {
   const operationMessage = operation && (
     <CAlert color="primary" closeButton={true} fade={true} onClick={closeModal}>
       <div>Your operation was successful, you can
-        <CLink className="tx-link" href={`https://explorer-mumbai.maticvigil.com/tx/${operation}/token-transfers`} target="_blank">
+        <CLink className="tx-link" href={`https://kovan.etherscan.io/tx/${operation}`} target="_blank">
           verify it here
         </CLink>
       </div>

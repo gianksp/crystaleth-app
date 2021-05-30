@@ -6,6 +6,7 @@ import {
   CSidebarNav,
   CSidebarMinimizer,
   CSidebarNavItem,
+  CImg,
 } from '@coreui/react'
 
 
@@ -19,7 +20,8 @@ const AppSidebar = () => {
       onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
-        <h1>CrystalEth</h1>
+        <CImg src="images/icon_crystal.svg" height={50} />
+        <h2>CrystalEth</h2>
       </CSidebarBrand>
       <CSidebarNav>
         <CSidebarNavItem

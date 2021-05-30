@@ -4,24 +4,23 @@ import CIcon from '@coreui/icons-react'
 
 const Miner = () => {
 
-  const [minedCrystals, setMinedCrystals] = useState(0)
+  const {crystals, setCrystals} = global.context
 
   const moused = (evt) => {
 
-    if (minedCrystals === evt.target.id) {
-      setMinedCrystals(0)
+    if (crystals === evt.target.id) {
+      setCrystals(0)
     } else {
-      setMinedCrystals(evt.target.id)
+      setCrystals(evt.target.id)
     }
-
   }
 
-  const crystals = () => {
+  const getSelectedCrystals = () => {
     let crystalsToRender = []
     for (let i=1; i<= 16;i++) {
 
-      const iconToDisplay = minedCrystals >= i ? "images/crystal_on.png" : "images/crystal_off.png"
-      crystalsToRender.push((<CIcon id={i} key={i} src={iconToDisplay} className="crystal-to-mine" onClick={moused} />))
+      const iconToDisplay = crystals >= i ? "images/icon_crystal.svg" : "images/icon_crystal_gray.svg"
+      crystalsToRender.push((<CIcon id={i} key={i} src={iconToDisplay} height={46} className="crystal-to-mine" onClick={moused} />))
     }
     return crystalsToRender
   }
@@ -32,7 +31,7 @@ const Miner = () => {
         <CCard className="no-border">
           <CCardBody>
             <CCol>
-              {crystals()}
+              {getSelectedCrystals()}
             </CCol>
           </CCardBody>
         </CCard>

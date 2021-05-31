@@ -10,7 +10,7 @@ import { useMoralis } from "react-moralis"
 import { DividendContract } from '../../contracts/DividendContract.js'
 import get from 'lodash/get'
 import isEmpty from 'lodash/isEmpty'
-import maxBy from 'lodash/maxBy'
+import orderBy from 'lodash/orderBy'
 import moment from 'moment'
 
 const Interests = () => {
@@ -71,8 +71,9 @@ const Interests = () => {
       })
   }
 
-  const chartX = dividends.map((dividend) => moment(dividend.block_signed_at).calendar())
-  const chartY = dividends.map((dividend) => dividend.value)
+  const sortedDividends = orderBy(dividends,  (item) => moment(item.block_signed_at), ['asc']).slice(Math.max(dividends.length - 50, 1))
+  const chartX = sortedDividends.map((dividend) => moment(dividend.block_signed_at).calendar())
+  const chartY = sortedDividends.map((dividend) => dividend.value)
 
   const getTop = () => {
     if (isEmpty(chartY))

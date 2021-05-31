@@ -20,7 +20,7 @@ const AvailableBalance = () => {
 
   useEffect(() => {
     loadUnstakedBalances()
-  }, [message, operation, isAuthenticated, available, crystals])
+  }, [message, operation, isAuthenticated, available, crystals, staked])
 
   useEffect(() => {
     loadUnstakedBalances()
@@ -33,6 +33,7 @@ const AvailableBalance = () => {
       return
     Moralis.Cloud.run("getTokenBalances", {ticker:stakingSymbol}).then((data) =>{
       const item = get(data, 'data.data.items', []).filter((item) => item.contract_address.toLowerCase() === process.env.REACT_APP_STAKE_CONTRACT.toLowerCase())
+      console.log(item)
       if (!isEmpty(item)) {
         const itemBalance = item[0]
         setAvailable(web3.utils.fromWei(itemBalance.balance.toString()))

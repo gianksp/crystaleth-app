@@ -65,7 +65,7 @@ const Account = () => {
       closeOnBackdrop={false}
     >
       <CModalHeader>
-        <CImg src="images/crystalEthLogo.png" height={50} />
+        <CImg src="https://i.ibb.co/qNnsPvX/Crystal-Eth-Logo.png" height={50} />
       </CModalHeader>
       <CModalBody>
         Before we begin, this a test project for the Moralis hackathon. As such,

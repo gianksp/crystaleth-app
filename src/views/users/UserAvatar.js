@@ -10,7 +10,7 @@ import { useMoralis } from "react-moralis"
 
 const UserAvatar = () => {
   const { Moralis, user } = useMoralis()
-  const [profileUrl, setProfileUrl] = useState('images/moralislogo.jpg')
+  const [profileUrl, setProfileUrl] = useState('https://i.ibb.co/L03wxBz/moralis-tech.png')
 
   useEffect(() => {
     loadProfilePicture()

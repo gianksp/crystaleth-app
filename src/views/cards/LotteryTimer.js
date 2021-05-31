@@ -32,7 +32,7 @@ const Lottery = () => {
     if (isEmpty(targetDateTime))
       return
 
-    const diffTime = targetDateTime.diff(moment())
+    const diffTime = moment(targetDateTime).diff(moment())
     const duration = moment.duration(diffTime, 'milliseconds')
     return `${duration.days()}d ${duration.hours()}h ${duration.minutes()}m ${duration.seconds()}s`
   }

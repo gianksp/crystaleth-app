@@ -32,6 +32,7 @@ const Interests = () => {
     Moralis.Cloud.run("getTokenTransfers", {contractAddress:process.env.REACT_APP_DIVIDEND_CONTRACT}).then((data) =>{
       const transactions = get(data, 'data.data.items', [])
       const txs = []
+      console.log(transactions)
       transactions.forEach((tx) => {
         const txfers = get(tx, 'transfers', [])
         txfers.forEach((txfer) => {
@@ -91,7 +92,7 @@ const Interests = () => {
         <CCardBody>
           <blockquote className="card-bodyquote">
             <h1 className="info-card-savings">INTERESTS</h1>
-            <h1 className="info-card-amount">{`$${(totalDividend || 0).toFixed(2)}`}</h1>
+            <h1 className="info-card-amount">{`$${parseFloat(totalDividend || 0).toFixed(2)}`}</h1>
           </blockquote>
 
           <CChart

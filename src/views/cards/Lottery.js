@@ -63,7 +63,7 @@ const Lottery = () => {
           <blockquote className="card-bodyquote">
             <h1 className="info-card-lottery">LOTTERY</h1>
             <div className="lottery-time-container">
-              <h1 className="info-card-amount">{`$${(prizePoolBalance || 0).toFixed(2)}`}</h1>
+              <h1 className="info-card-amount">{`$${parseFloat(prizePoolBalance || 0).toFixed(2)}`}</h1>
               <LotteryTimer />
             </div>
             <div>

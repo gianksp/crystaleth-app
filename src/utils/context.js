@@ -5,7 +5,9 @@ export const Context = () => {
   const [operation, setOperation] = useState()
   const [available, setAvailable] = useState()
   const [staked, setStaked] = useState()
+  const [dividends, setDividends] = useState([])
   const [crystals, setCrystals] = useState()
+  const [totalDividend, setTotalDividend] = useState()
 
   return {
     message,
@@ -18,5 +20,9 @@ export const Context = () => {
     setAvailable,
     crystals,
     setCrystals,
+    setDividends,
+    dividends,
+    totalDividend,
+    setTotalDividend,
   }
 }

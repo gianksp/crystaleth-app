@@ -22,9 +22,12 @@ const Lottery = () => {
 
   useEffect(() => {
     loadPrizePoolinfo()
-  }, [stakingContract, user, crystals, message, operation])
+  }, [stakingContract, user, crystals, message, operation, isAuthenticated])
 
   const loadPrizePoolinfo = () => {
+
+    if (!isAuthenticated)
+      return
 
     if (isEmpty(stakingContract) || isEmpty(user))
       return
@@ -60,13 +63,13 @@ const Lottery = () => {
           <blockquote className="card-bodyquote">
             <h1 className="info-card-lottery">LOTTERY</h1>
             <div className="lottery-time-container">
-              <h1 className="info-card-amount">{`$${prizePoolBalance}`}</h1>
+              <h1 className="info-card-amount">{`$${prizePoolBalance || 0}`}</h1>
               <LotteryTimer />
             </div>
             <div>
-              <h4>My crystals mined: {poolStake}</h4>
-              <h4>Total crystals mined: {poolParticipants}</h4>
-              <h4>Change to win next draw: {chanceToWin()}%</h4>
+              <h4>My crystals mined: {poolStake || 0}</h4>
+              <h4>Total crystals mined: {poolParticipants || 0}</h4>
+              <h4>Change to win next draw: {poolStake > 0 ? chanceToWin() : 0}%</h4>
             </div>
           </blockquote>
             <Miner></Miner>

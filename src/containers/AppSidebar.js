@@ -28,10 +28,6 @@ const AppSidebar = () => {
           name="Account"
           to="/account"
         />
-        <CSidebarNavItem
-          name="Transactions"
-          to="/transactions"
-        />
       </CSidebarNav>
       <CSidebarMinimizer className="c-d-md-down-none"/>
     </CSidebar>

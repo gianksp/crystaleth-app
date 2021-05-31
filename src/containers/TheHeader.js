@@ -45,9 +45,6 @@ const TheHeader = () => {
         <CHeaderNavItem className="px-3" >
           <CHeaderNavLink to="/account">Account</CHeaderNavLink>
         </CHeaderNavItem>
-        <CHeaderNavItem className="px-3" >
-          <CHeaderNavLink to="/transactions">Transactions</CHeaderNavLink>
-        </CHeaderNavItem>
       </CHeaderNav>
 
     </CHeader>

@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
-  CCard,
-  CCardBody,
   CCol,
   CRow,
+  CModal,
+  CModalHeader,
+  CModalBody,
+  CLink,
+  CImg,
 } from '@coreui/react'
-import {
-  CChart,
-} from '@coreui/react-chartjs'
+
+import { useMoralis } from 'react-moralis'
 
 import UserCard from '../users/UserCard.js'
 import AvailableBalance from '../cards/AvailableBalance.js'
@@ -16,6 +18,23 @@ import Lottery from '../cards/Lottery'
 import Interests from '../cards/Interests'
 
 const Account = () => {
+  const  { web3 } = useMoralis()
+  const [isNetwork, setNetwork] = useState(false)
+
+  useEffect(() => {
+
+    if (web3)
+      web3.setProvider(window.ethereum)
+      web3.eth.net.getId().then(netId => {
+        console.log(netId)
+        console.log(process.env.REACT_APP_NET_ID)
+        if (netId == process.env.REACT_APP_NET_ID) {
+          setNetwork(true)
+        }
+      })
+
+  }, [web3])
+
 
   return (
     <>
@@ -40,6 +59,26 @@ const Account = () => {
         <Lottery />
       </CCol>
     </CRow>
+
+    <CModal
+      show={!isNetwork}
+      closeOnBackdrop={false}
+    >
+      <CModalHeader>
+        <CImg src="images/crystalEthLogo.png" height={50} />
+      </CModalHeader>
+      <CModalBody>
+        Before we begin, this a test project for the Moralis hackathon. As such,
+        is running on a Ethereum test network. To get started:
+        <h5>1. Download metamask</h5>
+        <h5>2. Open metamask and change your network to "Kovan"</h5>
+        <h5>3. Make sure to fund your account with some Eth from
+        <CLink className="tx-link" href={`https://faucet.kovan.network/`} target="_blank">
+          Test Faucet
+        </CLink></h5>
+        <h5>4. Refresh the page when ready</h5>
+      </CModalBody>
+    </CModal>
 
     </>
   )

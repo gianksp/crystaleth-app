@@ -1,11 +1,11 @@
 {
-  "short_name": "CoreUI-React",
-  "name": "CoreUI-React sample",
+  "short_name": "CrystalEth",
+  "name": "CrystalEth",
   "icons": [
     {
-      "src": "./assets/img/favicon.png",
+      "src": "./assets/images/icon_crystal.svg",
       "sizes": "100x100",
-      "type": "image/png"
+      "type": "image/svg"
     }
   ],
   "start_url": ".",

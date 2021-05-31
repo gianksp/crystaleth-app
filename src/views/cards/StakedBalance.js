@@ -74,7 +74,7 @@ const StakedBalance = () => {
       <CCardBody>
         <blockquote className="card-bodyquote">
           <h5>Staked Balance</h5>
-          <h3>{`${stakingSymbol} ${staked}`}</h3>
+          <h3>{stakingSymbol && `${stakingSymbol}`} {staked ? ` ${staked}`: ' 0'}</h3>
           <CButton className="staking-button" disabled={!hasBalance()} onClick={toggleModal}>Unstake</CButton>
         </blockquote>
       </CCardBody>

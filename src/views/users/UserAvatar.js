@@ -10,7 +10,7 @@ import { useMoralis } from "react-moralis"
 
 const UserAvatar = () => {
   const { Moralis, user } = useMoralis()
-  const [profileUrl, setProfileUrl] = useState('avatars/6.jpg')
+  const [profileUrl, setProfileUrl] = useState('images/moralislogo.jpg')
 
   useEffect(() => {
     loadProfilePicture()
@@ -22,8 +22,11 @@ const UserAvatar = () => {
     query.descending("createdAt")
     query.limit(1)
     query.find().then(function ([application]) {
-      const ipfs = application.get('profileUrl').ipfs()
-      setProfileUrl(ipfs)
+      console.log(application)
+      if (application) {
+        const ipfs = application.get('profileUrl').ipfs()
+        setProfileUrl(ipfs)
+      }
     })
   }
 

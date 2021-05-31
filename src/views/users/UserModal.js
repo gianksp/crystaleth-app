@@ -19,11 +19,13 @@ const UserModal = ({show, onClose}) => {
   const { Moralis, user } = useMoralis()
   const [email, setEmail] = useState(user.get('email'))
   const [username, setUsername] = useState(user.get('username'))
+  const {setMessage} = global.context
 
   const saveModal = async () => {
     user.setUsername(username)
     user.setEmail(email)
     await user.save()
+    setMessage("A welome email has been sent to you!")
     onClose()
   }
 

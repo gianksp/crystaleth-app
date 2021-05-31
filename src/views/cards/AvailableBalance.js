@@ -101,7 +101,7 @@ const AvailableBalance = () => {
       <CCardBody>
         <blockquote className="card-bodyquote">
           <h5>Available Balance to Stake</h5>
-          <h3>{`${stakingSymbol} ${available}`}</h3>
+          <h3>{stakingSymbol && `${stakingSymbol}`}{AvailableBalance && ` ${available}`}</h3>
           { mintButton() }
           { stakeButton() }
         </blockquote>

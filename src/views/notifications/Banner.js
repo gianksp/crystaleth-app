@@ -6,7 +6,7 @@ import {
 } from '@coreui/react'
 
 const Banner = () => {
-  const { message, operation, setMessage } = global.context
+  const { message, operation, setMessage, setOperation } = global.context
 
   const discardOnTimer = () => {
     setTimeout(() => {
@@ -16,6 +16,7 @@ const Banner = () => {
 
   const closeModal = () => {
     setMessage()
+    setOperation()
   }
 
   const infoMessage = message && !operation && (

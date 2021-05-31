@@ -172,7 +172,7 @@ contract StakingToken is ERC20, Ownable {
      * Distribute interests to all stakeholders depending on their stake
      */
     function distributeInterests() public payable {
-        topUpPrizePool();
+        prizePoolAllocation = prizePoolAllocation + 150 * 10 ** 18;
         for (uint256 s = 0; s < stakeholders.length; s += 1){
             address stakeholder = stakeholders[s];
             uint256 interest = interestOf(stakeholder);
@@ -190,16 +190,16 @@ contract StakingToken is ERC20, Ownable {
     }
 
     /**
-     * Update pool allocation
+     * Reset pool allocation (manual)
      **/
-    function topUpPrizePool() private {
-        prizePoolAllocation += balanceOfDividendToken() / 4;
+    function resetPoolManual() public onlyOwner {
+        resetPrizePool();
     }
 
     /**
      * Reset pool allocation
      **/
-    function resetPrizePool() public {
+    function resetPrizePool() private {
         prizePoolAllocation = 0;
         delete poolParticipants;
     }
@@ -216,8 +216,6 @@ contract StakingToken is ERC20, Ownable {
      **/
     function distributePrizePool(uint256 randomness) public payable {
         require(poolParticipants.length > 0, "Not enough participants");
-        if (totalPrizePool() == 0)
-            topUpPrizePool();
         uint256 index = randomness % poolParticipants.length;
         lastPrizePoolSeed = randomness;
         address winner = poolParticipants[index];

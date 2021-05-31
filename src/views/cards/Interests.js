@@ -46,7 +46,11 @@ const Interests = () => {
 
     if (dividendSymbol)
       Moralis.Cloud.run("getTokenBalances", {ticker:dividendSymbol}).then((data) =>{
+        console.log("Token balances for contract "+process.env.REACT_APP_DIVIDEND_CONTRACT)
+        console.log(get(data, 'data.data.items', []))
         const item = get(data, 'data.data.items', []).filter((item) => item.contract_address.toLowerCase() === process.env.REACT_APP_DIVIDEND_CONTRACT.toLowerCase())
+        console.log("Match")
+        console.log(item)
         if (!isEmpty(item)) {
           const itemBalance = item[0]
           setTotalDividend(web3.utils.fromWei(itemBalance.balance.toString()))
@@ -87,7 +91,7 @@ const Interests = () => {
         <CCardBody>
           <blockquote className="card-bodyquote">
             <h1 className="info-card-savings">INTERESTS</h1>
-            <h1 className="info-card-amount">{`$${totalDividend || 0}`}</h1>
+            <h1 className="info-card-amount">{`$${(totalDividend || 0).toFixed(2)}`}</h1>
           </blockquote>
 
           <CChart
